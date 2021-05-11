@@ -2,7 +2,6 @@ import React from 'react';
 import $ from 'jquery';
 
 
-
 class UserGithub extends React.Component {
     constructor(props) {
     super(props);
@@ -10,9 +9,9 @@ class UserGithub extends React.Component {
     username: '',
     githubtUrl: '',
     avatarUrl: '',
-    created_at:'',
-    name:'',
-    bio:'',
+    login: '',
+    id: '',
+    locate: '',
     }
     }
     componentDidMount() {
@@ -24,9 +23,9 @@ class UserGithub extends React.Component {
     username: data.name,
     githubtUrl: data.html_url,
     avatarUrl: data.avatar_url,
-    created_at:data.created_at,
-    name:data.name,
-    bio:data.bio,
+    login: data.login,
+    id: data.id,
+    locate: data.location,
     });
     }
     });
@@ -34,14 +33,18 @@ class UserGithub extends React.Component {
     render() {
     return (
     <div>
-    <h3>{this.state.username}</h3>
-    <img src={this.state.avatarUrl} />
-    <a href={this.state.githubtUrl}>Github Link</a>.
-    <p>start coding from:{this.state.created_at}</p>
-    <p>my name:{this.state.name}</p>
-    <h2>{this.state.bio}</h2>
+    <img src={this.state.avatarUrl} /><br/>
+    <h3>user name:{this.state.username}</h3>
+    <a href={this.state.githubtUrl}>Github Link</a>
+    <h3>location:{this.state.locate}</h3>
+    <h3>login:{this.state.login}</h3>
+    <h3>id:{this.state.id}</h3>
     </div>
     );
     }
-    }
-    export default UserGithub
+   }
+//    ReactDOM.render(
+//     <UserGithub source="https://api.github.com/users/cjwu" />,
+//     document.getElementById('root')
+//    );
+   export default UserGithub;
